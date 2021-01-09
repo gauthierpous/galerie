@@ -1,6 +1,8 @@
 package galerie.entity;
+import java.util.List;
 import javax.persistence.*;
 import lombok.*;
+
 
 // Un exemple d'entité
 // On utilise Lombok pour auto-générer getter / setter / toString...
@@ -20,4 +22,12 @@ public class Galerie {
     private String adresse;
     
     // TODO : Mettre en oeuvre la relation oneToMany vers Exposition
+    @OneToMany(mappedBy = "galerie")
+    private List<Exposition> expositions;
+    public List<Exposition> getExpositions(){
+        return expositions;
+    }
+
+    //Développer la méthode pour calculer le chiffre d'affaires
+
 }
