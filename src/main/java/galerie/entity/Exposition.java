@@ -1,7 +1,7 @@
 package galerie.entity;
 import javax.persistence.*;
 import lombok.*;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 @Getter @Setter @NoArgsConstructor @RequiredArgsConstructor @ToString
@@ -14,7 +14,7 @@ public class Exposition{
 
     @Column(unique = true)
     @NonNull
-    private Date debut;
+    private LocalDate debut;
 
     @Column(unique = true)
     @NonNull

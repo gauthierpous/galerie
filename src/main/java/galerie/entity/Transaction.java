@@ -1,5 +1,5 @@
 package galerie.entity;
-import java.util.Date;
+import java.time.LocalDate;
 import javax.persistence.*;
 import lombok.*;
 
@@ -13,7 +13,7 @@ public class Transaction{
 
     @Column(unique = true)
     @NonNull
-    private Date venduLe;
+    private LocalDate venduLe;
 
     @Column(unique = true)
     @NonNull
@@ -25,8 +25,7 @@ public class Transaction{
     @ManyToOne
     private Personne personne;
 
-    @OneToOne(cascade=CascadeType.ALL)
-    @JoinColumn(name = "tableau_id", referencedColumnName = "id")
+    @OneToOne(mappedBy = "transaction")
     private Tableau tableau;
 
 }

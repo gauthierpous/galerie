@@ -20,14 +20,12 @@ public class Galerie {
     @Column(unique=true)
     @NonNull
     private String adresse;
-    
-    // TODO : Mettre en oeuvre la relation oneToMany vers Exposition
+
+
     @OneToMany(mappedBy = "galerie")
     private List<Exposition> expositions;
     public List<Exposition> getExpositions(){
         return expositions;
     }
-
-    //Développer la méthode pour calculer le chiffre d'affaires
 
 }
