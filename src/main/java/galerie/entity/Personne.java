@@ -13,17 +13,17 @@ public class Personne{
     private Integer id;
 
     @Column(unique = true)
-    @NonNull
     private String nom;
 
     @Column(unique = true)
     @NonNull
     private String adresse;
 
-    @OneToMany(mappedBy = "personne")
-    private List<Transaction> transactions;
+    //Relation Personne -- Transaction
+    @OneToMany(mappedBy = "client")
+    private List<Transaction> achats;
     public List<Transaction> getTransactions() {
-        return transactions;
+        return achats;
     }
 
 }

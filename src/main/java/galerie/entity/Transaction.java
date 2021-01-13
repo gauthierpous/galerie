@@ -19,13 +19,16 @@ public class Transaction{
     @NonNull
     private Float prixVente;
 
+    //Relation Transaction -- Exposition
     @ManyToOne
-    private Exposition exposition;
+    private Exposition lieuDeVente;
 
+    //Relation Transaction -- Personne
     @ManyToOne
-    private Personne personne;
+    private Personne client;
 
-    @OneToOne(mappedBy = "transaction")
-    private Tableau tableau;
+    //Relation Transaction -- Tableau
+    @OneToOne
+    private Tableau oeuvre;
 
 }

@@ -21,11 +21,11 @@ public class Galerie {
     @NonNull
     private String adresse;
 
-
-    @OneToMany(mappedBy = "galerie")
-    private List<Exposition> expositions;
+    //Relation Galerie -- Expositions
+    @OneToMany(mappedBy = "organisateur")
+    private List<Exposition> evenements;
     public List<Exposition> getExpositions(){
-        return expositions;
+        return evenements;
     }
 
 }

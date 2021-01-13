@@ -12,9 +12,10 @@ public class Artiste extends Personne{
     @NonNull
     private String biographie;
 
-    @OneToMany(mappedBy = "artiste")
-    private List<Tableau> tableaux;
+    //Relation Artiste -- Tableau
+    @OneToMany(mappedBy = "auteur")
+    private List<Tableau> oeuvres;
     public List<Tableau> getTableaux() {
-        return tableaux;
+        return oeuvres;
     }
 }

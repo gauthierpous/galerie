@@ -2,6 +2,7 @@ package galerie.entity;
 import javax.persistence.*;
 import lombok.*;
 import java.time.LocalDate;
+import java.util.LinkedList;
 import java.util.List;
 
 @Getter @Setter @NoArgsConstructor @RequiredArgsConstructor @ToString
@@ -24,16 +25,18 @@ public class Exposition{
     @NonNull
     private Integer duree;
 
-
+    //Relation Exposition -- Galerie
     @ManyToOne
-    private Galerie galerie;
+    private Galerie organisateur;
 
-    @ManyToOne
-    private Tableau tableau;
+    //Relation Exposition -- Tableau
+    @ManyToMany
+    List<Tableau> oeuvres = new LinkedList<>();
 
-    @OneToMany(mappedBy = "exposition")
-    private List<Transaction> transactions;
+    //Relation Exposition -- Transaction
+    @OneToMany(mappedBy = "lieuDeVente")
+    private List<Transaction> ventes;
     public List<Transaction> getTransactions() {
-        return transactions;
+        return ventes;
     }
 }

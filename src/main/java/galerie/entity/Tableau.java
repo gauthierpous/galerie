@@ -2,6 +2,7 @@ package galerie.entity;
 import javax.persistence.*;
 import lombok.*;
 import java.util.List;
+import java.util.LinkedList;
 
 @Getter @Setter @NoArgsConstructor @RequiredArgsConstructor @ToString
 
@@ -27,17 +28,17 @@ public class Tableau{
     @NonNull
     public Integer hauteur;
 
+    //Relation Tableau -- Exposition
+    @ManyToMany(mappedBy = "oeuvres")
+    List<Exposition> accrochages = new LinkedList<>();
 
+    //Relation Tableau -- Transaction
+    @OneToOne(mappedBy = "oeuvre")
+    private Transaction vendu;
+
+    //Relation Tableau -- Artiste
     @ManyToOne
-    private Artiste artiste;
+    private Artiste auteur;
 
-    @OneToMany(mappedBy = "tableau")
-    private List<Artiste> artistes;
-    public List<Artiste> getArtistes() {
-        return artistes;
-    }
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "transaction_id", referencedColumnName = "id")
-    private Transaction transaction;
 }
