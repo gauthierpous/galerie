@@ -4,7 +4,7 @@ import javax.persistence.*;
 import lombok.*;
 
 @Getter @Setter @NoArgsConstructor @RequiredArgsConstructor @ToString
-//Annotation indiquand la création d'une entité
+//Annotation indiquant la création d'une entité
 @Entity
 public class Transaction{
     @Id
@@ -31,4 +31,8 @@ public class Transaction{
     @OneToOne
     private Tableau oeuvre;
 
+    /*public LocalDate getVenduLe(){
+        return this.venduLe;
+    }
+     */
 }

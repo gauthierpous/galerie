@@ -9,6 +9,9 @@ import java.util.List;
 
 @Entity
 public class Exposition{
+
+    private float sommeDesVentes;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -38,5 +41,22 @@ public class Exposition{
     private List<Transaction> ventes;
     public List<Transaction> getTransactions() {
         return ventes;
+    }
+
+    /**
+     * Calculer le chiffre d'affaires pour une exposition
+     * @param id la clé primaire de l'exposition
+     * @return le chiffre d'affaires de cette exposition
+     */
+    public float CA(Integer id){
+        //Initialisation de la somme à 0;
+        //Pour chaque ventes, si l'id du lieu de vente correspond à l'id en paramètre
+        //Alors ajouter le prix de vente à la la somme.
+        this.sommeDesVentes = 0;
+        ventes.forEach((v) -> {
+            if(v.getLieuDeVente().id == id)
+            this.sommeDesVentes += v.getPrixVente();
+        });
+        return this.sommeDesVentes;
     }
 }

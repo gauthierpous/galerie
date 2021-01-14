@@ -8,6 +8,8 @@ import java.util.List;
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Personne{
+    private float budgetAnnuel;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -26,4 +28,16 @@ public class Personne{
         return achats;
     }
 
+    public float budgetArt(int annee){
+        //Initialisation du budget à 0;
+        //Pour chaque achat, si la date de l'achat correspond à l'année en paramètre
+        //Alors ajouter le prix d'achat au budget annuel du client.
+        this.budgetAnnuel = 0;
+        achats.forEach(a ->{
+           if (a.getVenduLe().getYear() == annee){
+               this.budgetAnnuel += a.getPrixVente();
+           }
+        });
+        return this.budgetAnnuel;
+    }
 }
