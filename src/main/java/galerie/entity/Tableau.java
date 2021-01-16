@@ -16,15 +16,15 @@ public class Tableau{
     @NonNull
     public String titre;
 
-    @Column(unique = true)
+    @Column
     @NonNull
     public String support;
 
-    @Column(unique = true)
+    @Column
     @NonNull
     public Integer largeur;
 
-    @Column(unique = true)
+    @Column
     @NonNull
     public Integer hauteur;
 

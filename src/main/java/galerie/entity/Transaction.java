@@ -11,11 +11,11 @@ public class Transaction{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(unique = true)
+    @Column
     @NonNull
     private LocalDate venduLe;
 
-    @Column(unique = true)
+    @Column
     @NonNull
     private Float prixVente;
 

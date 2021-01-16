@@ -1,4 +1,5 @@
 package galerie.entity;
+
 import java.util.List;
 import javax.persistence.*;
 import lombok.*;
@@ -29,7 +30,7 @@ public class Galerie {
     public List<Exposition> getExpositions(){
         return evenements;
     }
-
+/*
     public float CAannuel(int annee){
         //Initialisation du chiffre d'affaires à 0;
         //Pour chaque evenements, si la date de l'évènement correspond à l''année en paramètre
@@ -42,4 +43,6 @@ public class Galerie {
         });
         return this.caAnnuel;
     }
+
+ */
 }

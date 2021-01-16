@@ -7,6 +7,8 @@ import java.util.List;
 
 @Getter @Setter @NoArgsConstructor @RequiredArgsConstructor @ToString
 
+//Du coup je peux supprimer le NoArgsConstructor ?
+//OK
 @Entity
 public class Exposition{
 
@@ -16,17 +18,23 @@ public class Exposition{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(unique = true)
+    @Column
     @NonNull
     private LocalDate debut;
 
-    @Column(unique = true)
+    @Column
     @NonNull
     private String intitule;
 
-    @Column(unique = true)
+    @Column
     @NonNull
-    private Integer duree;
+    private int duree;
+
+    /*
+    @Column
+    @NonNull
+    private Galerie galerie;
+    */
 
     //Relation Exposition -- Galerie
     @ManyToOne
