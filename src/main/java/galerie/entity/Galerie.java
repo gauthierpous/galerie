@@ -1,5 +1,6 @@
 package galerie.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.*;
 import lombok.*;
@@ -11,7 +12,9 @@ import lombok.*;
 @Getter @Setter @NoArgsConstructor @RequiredArgsConstructor @ToString
 @Entity // Une entité JPA
 public class Galerie {
-    private float caAnnuel;
+    @Column
+    @NonNull
+    private float chiffreAffairesAnnuel;
 
     @Id  @GeneratedValue(strategy = GenerationType.IDENTITY) 
     private Integer id;
@@ -26,23 +29,20 @@ public class Galerie {
 
     //Relation Galerie -- Expositions
     @OneToMany(mappedBy = "organisateur")
-    private List<Exposition> evenements;
-    public List<Exposition> getExpositions(){
-        return evenements;
-    }
-/*
+    private List<Exposition> evenements = new ArrayList<>() ;
+    public List<Exposition> getExpositions(){ return evenements; }
+
     public float CAannuel(int annee){
         //Initialisation du chiffre d'affaires à 0;
         //Pour chaque evenements, si la date de l'évènement correspond à l''année en paramètre
         //Alors ajouter le CA de l'évènement au chiffre d'affaires annuel de la galerie.
-        this.caAnnuel = 0;
+        this.chiffreAffairesAnnuel = 0;
         evenements.forEach((e) -> {
            if(e.getDebut().getYear() == annee) {
-               this.caAnnuel += e.CA(this.id);
+               this.chiffreAffairesAnnuel += e.CA(this.id);
            }
         });
-        return this.caAnnuel;
+        return this.chiffreAffairesAnnuel;
     }
 
- */
 }

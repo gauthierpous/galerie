@@ -30,11 +30,6 @@ public class Exposition{
     @NonNull
     private int duree;
 
-    /*
-    @Column
-    @NonNull
-    private Galerie galerie;
-    */
 
     //Relation Exposition -- Galerie
     @ManyToOne
