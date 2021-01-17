@@ -12,12 +12,13 @@ import lombok.*;
 @Getter @Setter @NoArgsConstructor @RequiredArgsConstructor @ToString
 @Entity // Une entité JPA
 public class Galerie {
-    @Column
-    @NonNull
-    private float chiffreAffairesAnnuel;
 
     @Id  @GeneratedValue(strategy = GenerationType.IDENTITY) 
     private Integer id;
+
+    @Column
+    @NonNull
+    private float chiffreAffairesAnnuel;
 
     @Column(unique=true)
     @NonNull

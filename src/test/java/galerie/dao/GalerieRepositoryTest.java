@@ -48,11 +48,11 @@ public class GalerieRepositoryTest {
         //Comparaison
         assertEquals(nouvelleGalerie, galerieRecuperee, "On doit avoir la même galerie");
     }
-    //TODO : Les Galeries sont toutes différentes
+
     @Test
     public void galeriesToutesDifferentes() {
         log.info("On vérifie que toutes les galeries de la base sont différentes");
-        //Création de deux galerie différentes
+        //Création de deux galerie différentes mais avec le même nom
         Galerie nouvelleGalerie = new Galerie(30000, "Louvre", "Musée du Louvre");
         Galerie deuxiemeGalerie = new Galerie(5000, "Louvre", "2 rue Émile ZOLA");
 
@@ -64,30 +64,4 @@ public class GalerieRepositoryTest {
             galerieDAO.save(deuxiemeGalerie);
         }, "On doit avoir une violation de contrainte d'inrégrité (unicité)");
     }
-
-    //TODO : Ajouter Galerie + Exposition
-    @Test
-    public void onSaitAjouterUneGalerieEtSesExpositions(){
-        log.info("On ajoute une nouvelle galerie ainsi que des expositions");
-        //Création de la galerie
-        Galerie nouvelleGalerie = new Galerie(3000, "Louvre", "Musée du Louvre");
-
-        //Création des expositions
-        Exposition expo1 = new Exposition(LocalDate.of(2020, 11, 13), "Premiere Expo", 7);
-        Exposition expo2 = new Exposition(LocalDate.of(2020, 12, 14), "Deuxième expo", 7);
-
-        //Ajout des expositions à la liste des expositions de la galerie
-        nouvelleGalerie.getExpositions().add(expo1);
-        nouvelleGalerie.getExpositions().add(expo2);
-
-        //Enregistrement de la galerie dans la base de données
-        galerieDAO.save(nouvelleGalerie);
-    }
-
-
-
-
-
-
-
 }

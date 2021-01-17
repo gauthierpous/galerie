@@ -8,11 +8,14 @@ import java.util.List;
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Personne{
-    private float budgetAnnuel;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @Column
+    @NonNull
+    private float budgetAnnuel;
 
     @Column(unique = true)
     private String nom;
