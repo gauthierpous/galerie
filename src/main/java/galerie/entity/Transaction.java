@@ -21,18 +21,16 @@ public class Transaction{
 
     //Relation Transaction -- Exposition
     @ManyToOne
+    @NonNull
     private Exposition lieuDeVente;
 
     //Relation Transaction -- Personne
     @ManyToOne
+    @NonNull
     private Personne client;
 
     //Relation Transaction -- Tableau
     @OneToOne
+    @NonNull
     private Tableau oeuvre;
-
-    /*public LocalDate getVenduLe(){
-        return this.venduLe;
-    }
-     */
 }

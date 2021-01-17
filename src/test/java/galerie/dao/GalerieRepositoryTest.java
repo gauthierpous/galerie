@@ -36,7 +36,7 @@ public class GalerieRepositoryTest {
     public void onSaitAjouterUneGalerie(){
         log.info("On ajoute des données dans la table Galerie");
         //Création de la galerie
-        Galerie nouvelleGalerie = new Galerie(3000, "Louvre", "Musée du Louvre");
+        Galerie nouvelleGalerie = new Galerie("Louvre", "Musée du Louvre");
 
         //Enregistrements de la Galerie dans la base de données
         galerieDAO.save(nouvelleGalerie);
@@ -53,8 +53,8 @@ public class GalerieRepositoryTest {
     public void galeriesToutesDifferentes() {
         log.info("On vérifie que toutes les galeries de la base sont différentes");
         //Création de deux galerie différentes mais avec le même nom
-        Galerie nouvelleGalerie = new Galerie(30000, "Louvre", "Musée du Louvre");
-        Galerie deuxiemeGalerie = new Galerie(5000, "Louvre", "2 rue Émile ZOLA");
+        Galerie nouvelleGalerie = new Galerie("Louvre", "Musée du Louvre");
+        Galerie deuxiemeGalerie = new Galerie("Louvre", "2 rue Émile ZOLA");
 
         //Enregistrement des deux galeries dans la base de données
         galerieDAO.save(nouvelleGalerie);

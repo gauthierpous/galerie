@@ -33,7 +33,7 @@ public class PersonneRepositoryTest {
     public void onSaitAjouterDesDonneesDansLaBase(){
         log.info("On ajoute des données dans la  table Personne");
         //Création de la Personne
-        Personne nouvellePersonne = new Personne(2500, "44 boulevard de Lyon");
+        Personne nouvellePersonne = new Personne("44 boulevard de Lyon");
 
         //Enregistrements de la Galerie dans la base de données
         personneDAO.save(nouvellePersonne);

@@ -1,6 +1,8 @@
 package galerie.entity;
 import javax.persistence.*;
 import lombok.*;
+
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter @Setter @NoArgsConstructor @RequiredArgsConstructor @ToString
@@ -9,13 +11,11 @@ import java.util.List;
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Personne{
 
+    private float budgetAnnuel;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
-    @Column
-    @NonNull
-    private float budgetAnnuel;
 
     @Column(unique = true)
     private String nom;
@@ -26,7 +26,7 @@ public class Personne{
 
     //Relation Personne -- Transaction
     @OneToMany(mappedBy = "client")
-    private List<Transaction> achats;
+    private List<Transaction> achats = new ArrayList<>();
     public List<Transaction> getTransactions() {
         return achats;
     }

@@ -2,13 +2,11 @@ package galerie.entity;
 import javax.persistence.*;
 import lombok.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
 @Getter @Setter @NoArgsConstructor @RequiredArgsConstructor @ToString
-
-//Du coup je peux supprimer le NoArgsConstructor ?
-//OK
 @Entity
 public class Exposition{
 
@@ -42,7 +40,7 @@ public class Exposition{
 
     //Relation Exposition -- Transaction
     @OneToMany(mappedBy = "lieuDeVente")
-    private List<Transaction> ventes;
+    private List<Transaction> ventes = new ArrayList<>();
     public List<Transaction> getTransactions() {
         return ventes;
     }

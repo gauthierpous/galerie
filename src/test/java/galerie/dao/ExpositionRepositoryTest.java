@@ -36,7 +36,7 @@ public class ExpositionRepositoryTest {
     public void onSaitAjouterUneExposition(){
         log.info("On ajoute une exposition puis on vérifie qu'elle a bien été ajoutée dans la base de données");
         //Création de la galerie
-        Galerie nouvelleGalerie = new Galerie(3000, "Louvre", "Musée du Louvre");
+        Galerie nouvelleGalerie = new Galerie("Louvre", "Musée du Louvre");
 
         //On crée une exposition
         Exposition expo1 = new Exposition(LocalDate.now(), "Premiere expo", 7, nouvelleGalerie);
@@ -58,7 +58,7 @@ public class ExpositionRepositoryTest {
     public void onSaitAjouterUneGalerieEtSesExpositions(){
         log.info("On ajoute une nouvelle galerie ainsi que des expositions");
         //Création de la galerie
-        Galerie nouvelleGalerie = new Galerie(3000, "Louvre", "Musée du Louvre");
+        Galerie nouvelleGalerie = new Galerie("Louvre", "Musée du Louvre");
 
         //Création des expositions
         Exposition expo1 = new Exposition(LocalDate.of(2020, 11, 13), "Premiere Expo", 7, nouvelleGalerie);

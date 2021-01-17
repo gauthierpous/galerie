@@ -1,10 +1,10 @@
 package galerie.entity;
 
+import java.time.LocalDate;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
-import java.time.LocalDate;
 
-public class GalerieTest {
+public class PersonneTest {
     private Galerie Louvre = new Galerie("Louvre", "Musée du Louvre");
     private Exposition expo1 = new Exposition(LocalDate.of(2020, 11, 13), "Premiere Expo", 7, Louvre);
     private Exposition expo2 = new Exposition(LocalDate.of(2020, 12, 14), "Deuxième expo", 7, Louvre);
@@ -21,17 +21,14 @@ public class GalerieTest {
     private Transaction achat4 = new Transaction(LocalDate.of(2020, 12, 17), (float)1000, expo2, Guillaume, tableau4);
 
     @Test
-    public void testCalculCAGalerie(){
-        expo1.getTransactions().add(achat1);
-        expo1.getTransactions().add(achat2);
-        expo2.getTransactions().add(achat3);
-        expo2.getTransactions().add(achat4);
+    public void testCalculBudgetAnnuelClient(){
+        Guillaume.getTransactions().add(achat1);
+        Guillaume.getTransactions().add(achat2);
+        Guillaume.getTransactions().add(achat3);
+        Guillaume.getTransactions().add(achat4);
 
-        Louvre.getEvenements().add(expo1);
-        Louvre.getEvenements().add(expo2);
-
-        int CADefini = 2400;
-        float CACalcule = Louvre.CAannuel(2020);
-        assertEquals(CADefini, CACalcule, "Le chiffre d'affaires annuel doit être de 2400");
+        int budgetPrevu = 2400;
+        float budgetCalcule = Guillaume.budgetArt(2020);
+        assertEquals(budgetPrevu, budgetCalcule, "Le budget prévu pour Guillaume est de 2400");
     }
 }
