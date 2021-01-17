@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 import galerie.dao.GalerieRepository;
+import org.springframework.test.context.jdbc.Sql;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -23,28 +24,12 @@ public class ExpositionRepositoryTest {
     private GalerieRepository galerieDAO;
 
     @Test
+    @Sql("test-data.sql")
     public void onSaitCompterLeNombreDexpositions(){
         log.info("On compte le nombre d'Exposition enregistrés dans la base de données");
-        //Création de la galerie
-        Galerie nouvelleGalerie = new Galerie(3000, "Louvre", "Musée du Louvre");
-
-        //On crée 2 Expositions différentes
-        Exposition expo1 = new Exposition(LocalDate.of(2020, 11, 13), "Premiere expo", 7, nouvelleGalerie);
-        Exposition expo2 = new Exposition(LocalDate.of(2020, 12, 14), "Deuxième expo", 7, nouvelleGalerie);
-
-        //Ajout des expositions à la liste des expositions de la galerie
-        nouvelleGalerie.getExpositions().add(expo1);
-        nouvelleGalerie.getExpositions().add(expo2);
-
-        //On enregistre les expositions et la galerie dans la base de données
-        galerieDAO.save(nouvelleGalerie);
-        expositionDAO.save(expo1);
-        expositionDAO.save(expo2);
-
-        //On compte et on vérifie le nombre d'expositions présentes
-        int nombre = 2;
-        long resultat = expositionDAO.count();
-        assertEquals(nombre, resultat, "On doit trouver 2 expositions enregistrées");
+        int combienDansLeTest = 3;
+        float compte = expositionDAO.count();
+        assertEquals(combienDansLeTest, compte, "On doit trouver 3 expositions enregistrées");
     }
 
     @Test
